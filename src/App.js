@@ -22,7 +22,7 @@ function App() {
 
 //Fetch Tasks
 const fetchTasks = async () => {
-  const res = await fetch('http://localhost:5000/tasks')
+  const res = await fetch('https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks')
   const data = await res.json()
   
   return data
@@ -30,7 +30,7 @@ const fetchTasks = async () => {
 
 //Fetch Task
 const fetchTask = async (id) => {
-  const res = await fetch(`http://localhost:5000/tasks/${id}`)
+  const res = await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`)
   const data = await res.json()
   
   return data
@@ -38,7 +38,7 @@ const fetchTask = async (id) => {
 
 //Add task
 const addTask = async (task) => {
-  const res = await fetch('http://localhost:5000/tasks', {
+  const res = await fetch('https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -57,7 +57,7 @@ const addTask = async (task) => {
 
 //Delete tasks
 const deleteTask = async (id) => {
-  await fetch(`http://localhost:5000/tasks/${id}`, {method: 'DELETE',})
+  await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`, {method: 'DELETE',})
   setTasks(tasks.filter((task) => task.id !== id))
 }
 
@@ -66,7 +66,7 @@ const toggleReminder = async (id) => {
   const taskToToggle =  await fetchTask(id)
   const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder}
   
-  const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+  const res = await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
