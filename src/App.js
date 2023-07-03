@@ -4,7 +4,7 @@ import About from './components/About'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import {  Route} from 'react-router-dom'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -82,7 +82,6 @@ const toggleReminder = async (id) => {
 
 
   return (
-    <Router>
         <div className="container">
           <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
           
@@ -97,7 +96,6 @@ const toggleReminder = async (id) => {
           <Route path='/about' component={About}/>
           <Footer />
         </div>
-    </Router>
   
     
   );
