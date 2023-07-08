@@ -6,6 +6,8 @@ import AddTask from './components/AddTask'
 import { useState, useEffect } from 'react'
 import {  Route} from 'react-router-dom'
 
+const API_ENDPOINT = 'https://my-json-server.typicode.com/JamesTr28/task-tracker-json';
+
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
 
@@ -22,7 +24,7 @@ function App() {
 
 //Fetch Tasks
 const fetchTasks = async () => {
-  const res = await fetch('https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks')
+  const res = await fetch(API_ENDPOINT + '/tasks')
   const data = await res.json()
   
   return data
@@ -30,7 +32,7 @@ const fetchTasks = async () => {
 
 //Fetch Task
 const fetchTask = async (id) => {
-  const res = await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`)
+  const res = await fetch(API_ENDPOINT + `/tasks/${id}`)
   const data = await res.json()
   
   return data
@@ -38,7 +40,7 @@ const fetchTask = async (id) => {
 
 //Add task
 const addTask = async (task) => {
-  const res = await fetch('https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks', {
+  const res = await fetch(API_ENDPOINT+ '/tasks', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -57,7 +59,7 @@ const addTask = async (task) => {
 
 //Delete tasks
 const deleteTask = async (id) => {
-  await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`, {method: 'DELETE',})
+  await fetch(API_ENDPOINT + `/tasks/${id}`, {method: 'DELETE',})
   setTasks(tasks.filter((task) => task.id !== id))
 }
 
@@ -66,7 +68,7 @@ const toggleReminder = async (id) => {
   const taskToToggle =  await fetchTask(id)
   const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder}
   
-  const res = await fetch(`https://my-json-server.typicode.com/JamesTr28/task-tracker-json/tasks/${id}`, {
+  const res = await fetch(API_ENDPOINT + `/tasks/${id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
