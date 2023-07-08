@@ -1,6 +1,8 @@
 # ReactJs Task Tracker App
 
-
+Link: https://JamesTr28.github.io/ReactJs-Task-Tracker \
+This app uses fake api from https://my-json-server.typicode.com . So that Changes are faked and aren't persisted .\
+For testing full function in your local, you can run `npm run server` to initiate json server and replace API_ENDPOINT in App.js with your local JSON endpoint
 
 
 ## Available Scripts
